@@ -13,10 +13,8 @@ router.get("/verify", async (req, res) => {
     const { authorization } = req.headers;
     if (!authorization) throw "No token provided.";
 
-    const token = authorization.split(" ")[1];
-
     const status = await new Promise((resolve, reject) =>
-      jwt.verify(token, "process.env.JWT_SECRET", err =>
+      jwt.verify(authorization, "process.env.JWT_SECRET", err =>
         err ? reject("Invalid token!") : resolve("Token good!")
       )
     );
