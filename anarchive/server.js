@@ -67,9 +67,6 @@ app.use("/api/auth", authRoutes);
 // will serve assets, in production express will now serve both our client-side
 // "build" assets AND the API
 if (inProduction) {
-  const currentDirectory = process.cwd();
-  console.log("currentDirectory", currentDirectory);
-
   // express will serve up production assets
   app.use(express.static(`../client/build`));
 
